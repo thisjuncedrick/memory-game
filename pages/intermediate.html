@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Triple J's Memory Game | Intermediate</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS v5.2.1 -->
+		<link rel="stylesheet" href="../styles/bootstrap/bootstrap.min.css">
+		<!-- FontAwesome JS -->
+		<script src="../scripts/fontAwesome/FontAwesome.js"></script>
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="../styles/style.css">
+	</head>
+	<body>
+		<div id="snowyBG" class="fixed-top"></div>
+		<div class="container my-5 rounded-3">
+			<div class="container p-4" id="main_container">
+				<div class="text-center text-md-end mb-3">
+					<button class="btn btn-warning btn-sm px-3" id="soundBTN">
+						<i class="fa-solid fa-volume-high"></i>
+					</button>
+				</div>
+				<header class="text-center">
+					<a href="../index.html" class="text-decoration-none text-dark">
+						<button>
+							<h1 id="gameTitle"></h1>
+						</button>
+					</a>
+					<p class="lead fw-bold d-none d-md-block">Hit <kbd>F5</kbd> to restart. </p>
+					<p class="d-md-none">Pull to refresh to restart</p>
+				</header>
+				<div id="app_container" class="mt-5">
+					<div class="d-flex justify-content-around">
+						<h5 class="m-0">flips: <span id="flipCounter">0</span>
+						</h5>
+						<h5 class="m-0">
+							<i class="fa-regular fa-clock fa-sm me-2"></i>
+							<span id="gameTime">00:00</span>
+						</h5>
+					</div>
+					<div id="card_div" class="my-4"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Start screen -->
+		<div class="modal fade" id="startScreen" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+			<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
+				<div class="modal-content">
+					<div class="modal-header py-2">
+						<h5 class="modal-title m-0">
+							<i class="fa-solid fa-circle-question me-2"></i> Instructions
+						</h5>
+					</div>
+					<div class="modal-body text-center py-4">
+						<p>Click on the cards, if they are match, you'll hear a <i>ding</i> sound then they'll disappear. If they are not they'll glow red and shake before they flipped back again. <br />
+							<br />You need to find all of the card pairs in the lowest possible flip count, before the timer runs out.
+						</p>
+						<button type="button" class="btn btn-warning w-100 mt-2" id="startBTN" data-grid-size="6" data-time-limit="180" data-difficulty="Intermediate">Let's do this!</button>
+						<a href="../index.html">
+							<button type="button" class="btn btn-sm btn-secondary mt-2 w-100">Main Menu</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Game over screen -->
+		<div class="modal fade" id="gameOverScreen" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+			<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center py-4">
+						<h1 class="m-0" id="gameStatus"></h1>
+						<div id="scoreDetails">
+							<h5>Flip Count: <span id="finalFlipCount"></span>
+							</h5>
+							<h5>Time Remaining: <span id="finalTimeRemaining"></span>
+							</h5>
+						</div>
+						<button type="button" class="btn btn-warning w-100 mt-2" id="restartBTN">Restart</button>
+						<div class="btn-group btn-group-sm w-100 gap-2" role="group">
+							<button type="button" class="btn btn-sm btn-dark mt-2 w-100" id="submitScoreBTN" data-bs-toggle="modal" data-bs-target="#submitScoreModal">Submit Score</button>
+							<a href="../index.html" class="w-100">
+								<button type="button" class="btn btn-sm btn-secondary mt-2 w-100">Main Menu</button>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Submit Score -->
+		<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+		<div class="modal fade" id="submitScoreModal" tabindex="-1" data-bs-backdrop="static" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
+				<div class="modal-content">
+					<div class="modal-header py-2">
+						<h5 class="modal-title" id="modalTitleId">Intermediate Leaderboard</h5>
+						<button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<p class="m-0">Enter username: </p>
+						<input type="text" id="scoreUsername" class="form-control" maxlength="10">
+						<button type="button" class="btn btn-sm btn-success mt-4 w-100" id="modalSubmitScore">Submit Score</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Bootstrap JavaScript Libraries -->
+		<script src="../scripts/bootstrap/bootstrap.bundle.js"></script>
+		<!-- JQuery Library -->
+		<script src="../scripts/jquery/jquery-3.6.1.min.js"></script>
+		<!-- Particle JS -->
+		<script src="../scripts/particle-js/particles.min.js"></script>
+		<!-- Firebase Set Up -->
+		<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+		<script src="../scripts/firebase_config.js"></script>
+		<!-- Custom JS -->
+		<script src="../scripts/cards.js"></script>
+		<script src="../scripts/script.js"></script>
+	</body>
+</html>

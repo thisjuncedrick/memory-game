@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Triple J's Memory Game</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS v5.2.1 -->
+	<link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
+
+	<!-- FontAwesome JS -->
+	<script src="scripts/fontAwesome/FontAwesome.js"></script>
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+	<div id="snowyBG" class="fixed-top"></div>
+
+
+	<div class="container my-5 rounded-3">
+		<div class="container p-4" id="main_container">
+			<div class="text-center text-md-end mb-3">
+				<button class="btn btn-sm px-3" data-bs-toggle="modal" data-bs-target="#creditsModal">
+					<i class="fa-solid fa-circle-info text-danger"></i>
+				</button>
+			</div>
+			<header class="text-center">
+				<h1 id="gameTitle"></h1>
+				<p class="d-flex flex-column flex-md-row justify-content-center mb-2">
+					<a href="https://www.facebook.com/jacq.jacq.7792/" target="_blank" class="text-dark">Jacqueline S. Napo</a> <span class="d-none d-md-inline-block mx-3">&bull;</span>
+					<a href="https://www.facebook.com/thisjuncedrick/" target="_blank" class="text-dark">Jun Cedrick G. Narciso</a> <span class="d-none d-md-inline-block mx-3">&bull;</span>
+					<a href="https://www.facebook.com/jenzel.sancheztiamzon/" target="_blank" class="text-dark">Jenzel S. Tiamzon</a>
+				</p>
+				<p class="lead fw-bold">BSIT 3A</p>
+			</header>
+			<div>
+				<div class="row mt-0 mt-md-5">
+					<div class="col-12 col-md-4 text-center mb-4 mb-md-0">
+						<div class="img-wrapper">
+							<a href="pages/easy.html">
+								<i class="fa-solid fa-gamepad d-none d-md-block"></i>
+								<img src="assets/images/cover.png" alt="cover">
+							</a>
+						</div>
+						<h3 class="m-0 mt-2">Easy</h3>
+						<button class="btn btn-sm p-0 px-3 leaderboardBTN" data-difficulty="Easy">View Leaderboard</button>
+					</div>
+					<div class="col-12 col-md-4 text-center mb-4 mb-md-0">
+						<div class="img-wrapper">
+							<a href="pages/intermediate.html">
+								<i class="fa-solid fa-gamepad d-none d-md-block"></i>
+								<img src="assets/images/cover.png" alt="cover">
+							</a>
+						</div>
+						<h3 class="m-0 mt-2">Intermediate</h3>
+						<button class="btn btn-sm p-0 px-3 leaderboardBTN" data-difficulty="Intermediate">View Leaderboard</button>
+					</div>
+					<div class="col-12 col-md-4 text-center mb-4 mb-md-0">
+						<div class="img-wrapper">
+							<a href="pages/expert.html">
+								<i class="fa-solid fa-gamepad d-none d-md-block"></i>
+								<img src="assets/images/cover.png" alt="cover">
+							</a>
+						</div>
+						<h3 class="m-0 mt-2">Expert</h3>
+						<button class="btn btn-sm p-0 px-3 leaderboardBTN" data-difficulty="Expert">View Leaderboard</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Leaderboard Modal -->
+	<div class="modal fade" id="leaderboardModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+		<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
+			<div class="modal-content">
+				<div class="modal-header py-2">
+					<h5 class="modal-title" id="leaderboardTitleID"></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-center">
+					<img src="assets/images/loader.gif" alt="loader" id="scoreLoader" class="w-75">
+					<div class="table-responsive" id="scoreTable">
+						<p class="small text-start m-0">Score is sorted based on the lowest flip count.</p>
+						<table class="table table-striped table-bordered table-sm" id="scoreTable">
+							<thead class="bg-dark text-white">
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Username</th>
+									<th scope="col">Flip Count</th>
+								</tr>
+							</thead>
+							<tbody id="scoreData">
+							</tbody>
+						</table>
+						  
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<!-- Information Modal -->	
+	<div class="modal fade alert-danger" id="advisoryModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered modal-md" role="document">
+			<div class="modal-content">
+				<div class="modal-header py-2">
+					<h5 class="modal-title">
+						<i class="fa-solid fa-triangle-exclamation fa-sm me-1"></i>
+						Advisory
+					</h5>
+					<button type="button" class="btn-sm btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	
+				</div>
+				<div class="modal-body">
+					<p>Leaderboard System will be removed once the date is past <span class="text-decoration-underline">January 05, 2023</span>. This is due to Google's Firebase's one month limit for free user. Until then, please enjoy our game.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Credits Modal -->
+	<div class="modal fade" id="creditsModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
+			<div class="modal-content">
+				<div class="modal-header py-2">
+					<h5 class="modal-title">RESOURCES:</h5>
+						<button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>Card Design: <a href="https://www.facebook.com/jacq.jacq.7792/" target="_blank">Jacq</a>, and <a href="https://www.facebook.com/jenzel.sancheztiamzon" target="_blank">Jenzel</a></p>
+					<p>Coding and Animations: <a href="https://www.facebook.com/thisjuncedrick/" target="_blank">Jun Cedrick</a>, with help from <a href="https://stackoverflow.com/" target="_blank">StackOverflow</a></p>
+					<p>Sound Effect: <a href="https://www.zapsplat.com/" target="_blank">ZapSplat</a></p>
+
+					<p>Background Image <a href="https://unsplash.com/photos/IWenq-4JHqo" target="_blank">Snow Field by Adam Chang</a></p>
+					<p>Music: <a href="https://www.youtube.com/watch?v=OCuFNpaUGnU&t" target="_blank">Winter Festival (Stardew Valley OST)</a></p>
+					<div class="d-flex">
+						<div class="me-2">
+							<p>Font Style:</p>
+						</div>
+						<div>
+							<p>Headers: <a href="https://www.dafont.com/home-christmas.font" target="_blank">Home Christmas</a></p>
+							<p>Paragraphs: <a href="https://www.fontsquirrel.com/fonts/mountains-of-christmas" target="_blank">Mountains of Christmas</a></p>
+						</div>
+					</div>
+					<p>Database <a href="https://firebase.google.com/" target="_blank">Google's Firebase</a></p>
+					<p>Snow Effect: <a href="https://vincentgarreau.com/particles.js/" target="_blank">Particle.JS</a></p>
+					<p>HTML Framework: <a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/" target="_blank">Bootstrap 5</a></p>
+					<p>JS Library: <a href="https://jquery.com/" target="_blank">JQuery</a></p>
+					<p>Icons: <a href="https://fontawesome.com/" target="_blank">FontAwesome</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap JavaScript Libraries -->
+	<script src="scripts/bootstrap/bootstrap.bundle.js"></script>
+
+	<!-- JQuery Library -->
+	<script src="scripts/jquery/jquery-3.6.1.min.js"></script>
+
+	<!-- Particle JS -->
+	<script src="scripts/particle-js/particles.min.js"></script>
+
+    <!-- Firebase Set Up -->
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+    <script src="scripts/firebase_config.js"></script>
+
+	<!-- Custom JS -->
+	<script src="scripts/cards.js"></script>
+	<script src="scripts/script.js"></script>
+
+</body>
+
+</html>

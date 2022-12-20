@@ -1,0 +1,262 @@
+@font-face {
+    font-family: "Home Christmas";
+    src: url(../assets/fonts/HomeChristmas.otf);
+}
+
+@font-face {
+    font-family: "Mountains of Christmas";
+    src: url('../assets//fonts/MountainsofChristmas.ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#snowyBG{
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom right, rgba(255, 0, 0, 0.5), rgba(0, 255, 0, 0.5)), url('../assets/images/background.jpg') center center;
+    z-index: -99;
+}
+
+#main_container{
+    background: rgba(255, 255, 255, 0.52);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    position: relative;
+}
+
+#gameTitle:after{
+    content: "MEMORY GAME"
+}
+
+h1, h3, h5{
+    font-family: 'Home Christmas', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p, .leaderboardBTN, .modal button{
+    font-family: 'Mountains of Christmas', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold; 
+}
+
+.img-wrapper{
+    width: 70%;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 10px, 0.7);
+}
+
+.img-wrapper img{
+    width: 100%;
+    transition: all 0.3s ease
+}
+
+.img-wrapper i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: lime;
+    opacity: 0;
+    font-size: 2em;
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+    z-index: 99;
+    transition: opacity 0.3s ease;
+}
+
+.modal{
+    backdrop-filter: grayscale(0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+header a button{
+    background-color: transparent;
+    border: none;
+    position: relative;
+}
+
+#card_div{
+    display: grid;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+
+.card_container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.card_container .card_face{
+    width: inherit;
+    transition: transform 0.3s ease;
+    backface-visibility: hidden;
+    position: absolute;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.279);
+}
+
+.card_face.card_up{
+    transform: rotateY(180deg);
+    background-color: ivory;
+}
+
+.card_container.active .card_face.card_up{
+    transform: rotateY(0deg);
+}
+.card_container.active .card_face.card_down{
+    transform: rotateY(-180deg);
+}
+
+.disableClick{
+    pointer-events: none;
+}
+
+.wrong{
+    animation: shake 0.3s ease;
+    z-index: 99;
+}
+
+.wrong .card_up{
+    box-shadow: 0 0 15px rgb(255, 0, 0);
+    animation: wrongFlicker 0.3s ease;
+}
+
+@keyframes wrongFlicker {
+    0%, 40%, 80%{
+		background-color: rgb(255, 185, 185);
+	}
+
+    20%, 60%, 100%{
+		background-color: #FFFDD0;
+	}
+}
+@keyframes shake {
+    0%,
+	30%,
+	60%,
+	90% {
+		transform: translateX(5px);
+	}
+
+	15%,
+	45%,
+	75%,
+	99% {
+		transform: translateX(-5px);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.match{
+    animation: match 0.4s ease 1 forwards;
+    z-index: 99;
+}
+
+.match .card_up{
+    box-shadow: 0 0 15px rgb(13, 255, 0);
+    background-color: lightgreen;
+}
+
+@keyframes match {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50%{
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+    100%{
+        translate: scale(1);
+        opacity: 0;
+    }
+}
+
+
+
+@media (min-width: 768px) {
+    .img-wrapper a:hover i{
+        opacity: 1;
+    }
+
+    .img-wrapper a img{
+        filter: grayscale(0.7);
+    }
+
+    .img-wrapper a:hover img{
+        transform: scale(1.13);
+        filter: grayscale(0);
+    }
+    
+    header a button #gameTitle{
+        position: relative;
+        left: 0;
+        transition: all 0.3s ease;
+    }
+    
+    header a button #gameTitle::before{
+        content: "🡀";
+        position: absolute;
+        opacity: 0;
+        left: -30px;
+        transition: opacity 0.3s ease
+    }
+
+    header a button #gameTitle:hover{
+        left: 30px;
+    }
+
+    
+    header a button #gameTitle:hover::before{
+        opacity: 1;
+    }
+
+    #card_div[data-grid-size="4"]{
+        grid-template-columns: repeat(4, 100px);
+        grid-template-rows: repeat(4, 100px);
+    }
+
+    #card_div[data-grid-size="6"]{
+        grid-template-columns: repeat(6, 80px);
+        grid-template-rows: repeat(6, 80px);
+    }
+
+    #card_div[data-grid-size="8"]{
+        grid-template-columns: repeat(8, 60px);
+        grid-template-rows: repeat(8, 60px);
+    }
+
+
+
+}
+
+@media (max-width: 767.98px) {
+    .card_container{
+        height: 65px;
+        width: 65px;
+    }
+
+    #card_div{
+        grid-template-columns: repeat(4, 65px);
+        row-gap: 10px;
+        column-gap: 10px;
+    }
+
+
+
+}
